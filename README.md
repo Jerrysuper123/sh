@@ -1,5 +1,118 @@
 # sh
 
+Sure! `awk` is a powerful text-processing tool used in **Unix-like** operating systems for pattern scanning and processing. It is typically used for tasks like extracting, manipulating, and reporting data from text files or input streams.
+
+### **What is `awk`?**
+`awk` is a **pattern scanning** and **processing language**. It processes text line by line, splits each line into fields, and performs actions on those fields based on patterns that match.
+
+---
+
+### **Basic Syntax:**
+```sh
+awk 'pattern { action }' file
+```
+
+- **`pattern`**: A condition that `awk` checks for each line. If the pattern matches, the action is executed.
+- **`action`**: The operation that `awk` performs when a line matches the pattern.
+- **`file`**: The file to process. If no file is given, `awk` reads from standard input (e.g., a pipeline).
+
+If no **pattern** is given, `awk` performs the **action** on every line. If no **action** is given, `awk` prints the line by default.
+
+---
+
+### **How `awk` Works:**
+1. **Reads input** (line by line).
+2. **Splits each line** into **fields** (by default, fields are separated by whitespace).
+3. **Matches patterns** in each line.
+4. **Performs actions** when a pattern matches.
+
+---
+
+### **Basic Example:**
+
+```sh
+echo "Hello World" | awk '{ print $1 }'
+```
+This command outputs:
+```
+Hello
+```
+
+Explanation:
+- `awk '{ print $1 }'`: The **action** `print $1` tells `awk` to print the **first field** (`$1`) of the input.
+- Fields are split by **whitespace** by default, so `Hello` is printed because it is the first word in the line.
+
+---
+
+### **Key Concepts in `awk`:**
+
+1. **Fields in `awk`:**
+   - `awk` divides each input line into **fields**, which can be referenced by `$1`, `$2`, `$3`, etc.
+   - `$0` refers to the **entire line**.
+   - By default, fields are separated by **whitespace** (spaces or tabs).
+
+   **Example:**
+   ```sh
+   echo "John 25 Developer" | awk '{ print $1, $2 }'
+   ```
+   Output:
+   ```
+   John 25
+   ```
+   Here, `$1` refers to `John`, and `$2` refers to `25`.
+
+2. **Pattern Matching:**
+   - Patterns can be strings or regular expressions.
+   - If the pattern matches the input, the **action** is executed.
+
+   **Example:**
+   ```sh
+   echo "John 25 Developer" | awk '$2 == 25 { print $1 }'
+   ```
+   Output:
+   ```
+   John
+   ```
+   Here, the pattern `$2 == 25` matches when the **second field** is `25`, and the action prints the **first field**.
+
+3. **Built-in Variables in `awk`:**
+   - `NR`: The **number of records** (lines) processed so far.
+   - `NF`: The **number of fields** in the current record (line).
+   - `$0`: The entire current line.
+   - `$1`, `$2`, ...: Individual fields in the current record.
+
+   **Example:**
+   ```sh
+   echo -e "John 25 Developer\nJane 30 Manager" | awk '{ print NR, $1, $2 }'
+   ```
+   Output:
+   ```
+   1 John 25
+   2 Jane 30
+   ```
+   Here, `NR` is the line number, `$1` is the first field (name), and `$2` is the second field (age).
+
+4. **Operators in `awk`:**
+   - You can use various operators for comparisons or arithmetic:
+     - Comparison: `==`, `!=`, `<`, `>`, `<=`, `>=`
+     - Arithmetic: `+`, `-`, `*`, `/`, `%`
+
+   **Example:**
+   ```sh
+   echo -e "John 25\nJane 30" | awk '$2 > 25 { print $1 }'
+   ```
+   Output:
+   ```
+   Jane
+   ```
+
+5. **Actions:**
+   - Actions in `awk` are enclosed in curly braces `{}`.
+   - The default action is to **print** the matching line (`print $0`), but you can specify custom actions like printing specific fields, performing calculations, or modifying data.
+
+---
+
+
 ## declare array in shell
 In shell scripting (specifically in **Bash**), arrays can be declared and used in the following ways:
 
