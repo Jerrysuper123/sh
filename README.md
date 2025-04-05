@@ -1,5 +1,58 @@
 # sh
 
+## 👪 What is a **parent shell**?
+
+The **parent shell** is your **main shell session** — the one you start when you open your terminal. This shell:
+
+- Lets you run commands
+- Holds your environment variables
+- Can define functions, aliases, etc.
+
+This is your "main room" where you’re doing all your work.
+
+---
+
+### 🐣 What is a **subshell**?
+
+A **subshell** is like a **child process** of your main shell — it’s a new instance of the shell, started from inside the current one.
+
+It has its **own environment**, separate from the parent shell.
+
+You can think of it like this:
+
+```
+Main shell (parent)
+│
+├── Subshell (child)
+│     ├── Can run commands
+│     ├── Can have its own variables
+│     └── Will exit when done
+```
+
+---
+
+### 🔄 Example: variable in parent vs. subshell
+
+```bash
+# In parent shell
+myvar="hello"
+(echo "In subshell: $myvar")  # works: subshell inherits variables
+
+(myvar="changed in subshell")
+echo "Back in parent: $myvar"  # still "hello" – change didn't leak back!
+```
+
+- Subshell **inherits** variables from the parent.
+- But any changes in the subshell **do not affect** the parent.
+
+---
+
+### 🚨 Why does this matter?
+
+When writing shell scripts or functions, if you want something to persist **outside** a subshell (like a variable or function), you have to be aware that subshells don’t pass things back to the parent.
+
+Let me know if you want visual examples or something interactive to try!
+
 Sure! `awk` is a powerful text-processing tool used in **Unix-like** operating systems for pattern scanning and processing. It is typically used for tasks like extracting, manipulating, and reporting data from text files or input streams.
 
 ### **What is `awk`?**
