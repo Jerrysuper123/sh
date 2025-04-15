@@ -1,8 +1,78 @@
 # sh
 
-Great question! If you're working with JSON in the shell, **`jq`** is your best friend.
+## 🔹 What does `2>/dev/null` do?
+
+This part of a command:
+```bash
+2>/dev/null
+```
+
+Means:
+
+> “Redirect **stderr (file descriptor 2)** to **`/dev/null`**, which discards it completely.”
 
 ---
+
+## 🧠 In detail:
+
+### ✅ File descriptors in Unix:
+- `0` → stdin (input)
+- `1` → stdout (normal output)
+- `2` → stderr (error output)
+
+So when you write:
+```bash
+some_command 2>/dev/null
+```
+
+You’re saying:
+> “Run `some_command`, but **suppress any error messages** it tries to print.”
+
+---
+
+## 🗑️ What is `/dev/null`?
+- It’s a **special file** that discards anything you write to it.
+- It's like a **black hole** for output — useful when you want to ignore something completely.
+
+---
+
+## 🔍 Example:
+
+```bash
+jq . invalid.json
+```
+
+If `invalid.json` has bad JSON, you get:
+```
+parse error: Expected value at line 1, column 1
+```
+
+But with:
+```bash
+jq . invalid.json 2>/dev/null
+```
+
+You get **no output**, no error — just silence.
+
+---
+
+## 🔧 Why use this?
+
+- To **suppress error messages** in scripts and avoid cluttering the terminal.
+- To **check if something succeeds quietly**, without logging the error unless you want to.
+
+---
+
+## 🔄 Also useful:
+
+- Redirect both stdout and stderr:
+  ```bash
+  some_command > /dev/null 2>&1
+  ```
+
+This means:
+> Send stdout to `/dev/null`, and send stderr **to wherever stdout is now going** (also `/dev/null`).
+
 
 ## 🧠 What is `jq`?
 
