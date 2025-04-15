@@ -1,5 +1,105 @@
 # sh
 
+
+## 🧠 What is `awk`? - AWK is to select 1 column and then filter by what
+- `awk` is a **pattern scanning and processing language**.
+- It reads **input line by line**, splits lines into **fields**, and lets you apply **rules** to each line or field.
+- Named after its creators: **A**ho, **W**einberger, and **K**ernighan.
+
+---
+
+## 🧰 What is `awk` used for?
+
+Here are **common use cases**:
+
+### 1. **Extracting specific columns**
+```bash
+awk '{print $1}' file.txt
+```
+Prints the **first column** of each line (by default, fields are split by spaces).
+
+Example:
+```bash
+cat names.txt
+John Smith
+Alice Tan
+```
+
+```bash
+awk '{print $2}' names.txt
+# Output:
+Smith
+Tan
+```
+
+---
+
+### 2. **Using custom field separators**
+```bash
+awk -F: '{print $1}' /etc/passwd
+```
+`-F:` tells `awk` to use `:` as the **field delimiter**.
+
+---
+
+### 3. **Filtering lines**
+```bash
+awk '$3 > 100' data.txt
+```
+Only print lines where the **third column** is greater than 100.
+
+---
+
+### 4. **Summing numbers**
+```bash
+awk '{sum += $2} END {print sum}' salaries.txt
+```
+Adds up the **second column** of all lines.
+
+---
+
+### 5. **Formatting output**
+```bash
+awk '{printf "Name: %s, Score: %d\n", $1, $2}' scores.txt
+```
+Formats output like a mini reporting tool.
+
+---
+
+### 6. **Field calculations**
+```bash
+awk '{print $1, $2, $3 * 2}' data.txt
+```
+Maybe your 3rd column is quantity — this prints it **doubled**.
+
+---
+
+### 🔁 Structure of an `awk` command:
+```bash
+awk 'pattern { action }' filename
+```
+- `pattern` — when to apply the rule (can be empty = always)
+- `action` — what to do (e.g. print, sum, etc.)
+
+---
+
+### 🔂 Example with pattern:
+```bash
+awk '$1 == "ERROR" {print $0}' logfile.txt
+```
+Print only lines where the **first word is "ERROR"**.
+
+---
+
+## 🔧 Why use `awk`?
+- It’s more powerful than `cut` or `grep` when you need **logic or calculations**.
+- Lightweight compared to writing a full Python script.
+- Common in sysadmin scripts, log parsing, and quick CLI data tasks.
+
+---
+
+
+
 ## 👪 What is a **parent shell**?
 
 The **parent shell** is your **main shell session** — the one you start when you open your terminal. This shell:
