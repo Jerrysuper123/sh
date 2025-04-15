@@ -1,5 +1,81 @@
 # sh
 
+Great question! If you're working with JSON in the shell, **`jq`** is your best friend.
+
+---
+
+## 🧠 What is `jq`?
+
+- **`jq`** is a **command-line tool** for **parsing, filtering, transforming, and formatting JSON** data.
+- It’s like `awk` or `sed`, but for **structured JSON**.
+- It's super useful when you're dealing with API responses, config files, cloud CLIs (like `oci`, `aws`, `az`), or anything that spits out JSON.
+
+---
+
+## 🧰 What is `jq` used for?
+
+### 🔹 1. **Pretty-print JSON**
+```bash
+jq . data.json
+```
+Neatly formats raw JSON.
+
+---
+
+### 🔹 2. **Extract specific values**
+```bash
+jq '.name' data.json
+```
+Gets the value of the `name` field.
+
+Example:
+```json
+{ "name": "Alice", "age": 30 }
+```
+
+Output:
+```
+"Alice"
+```
+
+---
+
+### 🔹 3. **Chaining nested fields**
+```bash
+jq '.user.name.first' data.json
+```
+
+---
+
+### 🔹 4. **Filter items in arrays**
+```bash
+jq '.users[] | select(.active == true)' data.json
+```
+Gives you only users with `"active": true`.
+
+---
+
+### 🔹 5. **Map and transform data**
+```bash
+jq '.users[] | {name: .name, email: .email}' data.json
+```
+Creates a simplified view of the users.
+
+---
+
+### 🔹 6. **Combine with other shell tools**
+```bash
+curl https://api.example.com/data | jq '.results[0].title'
+```
+
+---
+
+### 🔹 7. **Compact output (no pretty formatting)**
+```bash
+jq -c '.users[]' data.json
+```
+
+
 
 ## 🧠 What is `awk`? - AWK is to select 1 column and then filter by what
 - `awk` is a **pattern scanning and processing language**.
