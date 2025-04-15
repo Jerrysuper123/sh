@@ -1,5 +1,63 @@
 # sh
 
+## 🧾 To replace one word with another **in the whole file**:
+
+```vim
+:%s/oldword/newword/g
+```
+
+### 🔍 What it means:
+- `:` → enter command mode
+- `%` → apply to the **whole file**
+- `s` → **substitute**
+- `/oldword/` → the word to search
+- `/newword/` → the word to replace with
+- `g` → replace **all occurrences** in each line (not just the first)
+
+---
+
+## ✅ Example:
+
+You have:
+```txt
+hello world
+hello there
+```
+
+You run:
+```vim
+:%s/hello/hi/g
+```
+
+You get:
+```txt
+hi world
+hi there
+```
+
+---
+
+## 🗂 Replace in current **line only**:
+```vim
+:s/oldword/newword/g
+```
+
+---
+
+## 🔎 Ask before each replacement:
+Add a `c` (confirm):
+```vim
+:%s/oldword/newword/gc
+```
+You’ll get a `[y/n/a/q/l]` prompt:
+- `y` → yes
+- `n` → no
+- `a` → all
+- `q` → quit
+- `l` → last
+
+---
+
 ## 🔹 What does `2>/dev/null` do?
 
 This part of a command:
