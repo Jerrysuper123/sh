@@ -1,5 +1,69 @@
 # sh
 
+## how to do redirect
+```
+user@user-mac test % ls
+data.json	link.sh		salary.txt
+fakePass.txt	names.txt	test.sh
+
+// > redirect a file but does not append
+user@user-mac test % ls -l . > output.txt
+user@user-mac test % ls
+data.json	link.sh		output.txt	test.sh
+fakePass.txt	names.txt	salary.txt
+user@user-mac test % vim output.txt
+
+user@user-mac test % > output.txt
+
+user@user-mac test % ls
+data.json	link.sh		output.txt	test.sh
+fakePass.txt	names.txt	salary.txt
+user@user-mac test % > ./output.txt 
+
+//>> redirect to a file but append
+user@user-mac test % ls -l . >> output.txt 
+user@user-mac test % ls
+data.json	link.sh		output.txt	test.sh
+fakePass.txt	names.txt	salary.txt
+user@user-mac test % less output.txt 
+user@user-mac test % ls -l . >> output.txt
+user@user-mac test % less output.txt 
+user@user-mac test % 
+user@user-mac test % ls ./fake 
+ls: ./fake: No such file or directory
+user@user-mac test % ls ./fake > error.txt
+ls: ./fake: No such file or directory
+
+//2> redirect standerror to a file
+user@user-mac test % ls ./fake 2> error.txt
+user@user-mac test % ls
+data.json	fakePass.txt	names.txt	salary.txt
+error.txt	link.sh		output.txt	test.sh
+user@user-mac test % less error.txt 
+user@user-mac test %
+
+//2>&1 redirect both output and error to both.txt file
+user@user-mac test % ls ./fake > both.txt 2>&1
+user@user-mac test % ls
+both.txt	error.txt	link.sh		output.txt	test.sh
+data.json	fakePass.txt	names.txt	salary.txt
+user@user-mac test % less both.txt 
+user@user-mac test %
+
+// &> redirect both output and error to both.txt file 
+user@user-mac test % ls ./fake &> both.txt   
+user@user-mac test % less both.txt
+
+// &>> redirect and append both output and error to both.txt file 
+user@user-mac test % ls ./fake &>> both.txt
+
+user@user-mac test % less both.txt 
+user@user-mac test %
+
+//&> /dev/null, discard all info, blackhole
+user@user-mac test % ls ./fake &> /dev/null
+```
+
 ## 🧾 To replace one word with another **in the whole file**:
 
 ```vim
