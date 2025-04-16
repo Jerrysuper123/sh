@@ -13,6 +13,7 @@ data.json	link.sh		output.txt	test.sh
 fakePass.txt	names.txt	salary.txt
 user@user-mac test % vim output.txt
 
+//in linux, this remove everything in the output.txt file
 user@user-mac test % > output.txt
 
 user@user-mac test % ls
