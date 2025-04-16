@@ -7,6 +7,11 @@ grep is to grab a pattern matching files from a file
 
 Jq is a way to process the json structure data.
 
+## handy way to make multiple folders in linux - create year and month folders, e.g. 2024-01
+```
+mkdir {2007..2030}-{01..12}
+```
+
 ## grep <pattern> <filename> => return lines that matched the pattern
 grab pattern from a file
 
