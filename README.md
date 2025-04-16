@@ -1,5 +1,28 @@
 # sh
 
+## short cut key in command line when typing
+
+
+### 🧹 **Delete the whole line:**
+
+- **Ctrl + U**  
+  Deletes everything **before** the cursor.
+
+- **Ctrl + K**  
+  Deletes everything **after** the cursor.
+
+- To clear the **entire line**, just press:
+  - **Ctrl + U** followed by **Ctrl + K**
+
+---
+
+### 🔄 **Bonus: Move around quickly**
+- **Ctrl + A** – Move to beginning of line  
+- **Ctrl + E** – Move to end of line  
+- **Option + → / ←** – Move forward/backward one word
+
+
+
 ## summary
 AWK is to treat file like excel structure to filter, extract, manipulate/sum the data.
 
