@@ -3,7 +3,45 @@
 ## summary
 AWK is to treat file like excel structure to filter, extract, manipulate/sum the data.
 
+grep is to grab a pattern matching files from a file
+
 Jq is a way to process the json structure data.
+
+## grep <pattern> <filename> => return lines that matched the pattern
+grab pattern from a file
+
+```
+user@user-mac test % ls | grep name
+nameall.txt
+names.txt
+names2.txt
+user@user-mac test % less nameall.txt
+user@user-mac test % cat nameall.txt 
+John Smith
+Alice Tan
+jerry Chen
+haha
+user@user-mac test % grep Al nameall.txt
+Alice Tan
+user@user-mac test % vim nameall.txt
+
+// -i for case insensitive
+user@user-mac test % grep Al nameall.txt -i
+Alice Tan
+Ali Muhammah
+alibaba
+
+//-v for print that lines that do not match the pattern
+user@user-mac test % grep Al nameall.txt -v
+John Smith
+jerry Chen
+haha
+alibaba
+user@user-mac test % grep Al nameall.txt -vi
+John Smith
+jerry Chen
+haha
+```
 
 ## how to do redirect
 ```
