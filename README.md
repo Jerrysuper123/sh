@@ -1,5 +1,10 @@
 # sh
 
+## summary
+AWK is to treat file like excel structure to filter, extract, manipulate/sum the data.
+
+Jq is a way to process the json structure data.
+
 ## how to do redirect
 ```
 user@user-mac test % ls
