@@ -3,9 +3,9 @@
 ## important key
 
 ### line movement
-j - down one line
+j - down one line, 5j means going down 5 times
 
-k - up one line
+k - up one line, 5k means going up 5 times
 
 0 - beginning of current line
 
