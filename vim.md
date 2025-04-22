@@ -13,6 +13,7 @@ $ - to the end of the current line
 
 #### go to a specific line
 5G - go to line 5
+
 G - go to end of line, never specific line no
 
 ## page movement
