@@ -1,5 +1,55 @@
 # sh
 
+## ls <folder> does list recursively, ls does not
+
+By default, when you run:
+
+```bash
+ls
+```
+
+it **lists the contents** of the **current directory** — **not recursively**, and not the current directory itself.
+
+---
+
+But here’s the key:
+
+### 🔍 When you do something like:
+```bash
+ls .git
+```
+
+You’re telling `ls` to list the **contents of `.git/`**, because `.git` is a **directory**.
+
+So `ls` *does* "dive in" if you explicitly tell it to list a directory.
+
+---
+
+### 🧪 Example:
+
+Say your folder has this structure:
+
+```
+.
+├── file.txt
+└── .git/
+    ├── config
+    └── HEAD
+```
+
+- `ls` → lists `file.txt` and `.git` (if you include hidden files).
+- `ls .git` → lists `config` and `HEAD` (it "dives into" `.git`)
+- `ls -d .git` → shows just `.git`
+
+---
+
+### 💡 Why `-d` Matters:
+If you’re scripting or working with globs like `.*`, without `-d`, `ls` will try to **expand** those directories into their contents — sometimes overwhelming your terminal.
+
+With `-d`, you say:  
+👉 *“No, just list the names of the directories/files themselves.”*
+
+
 ## short cut key in command line when typing
 
 
