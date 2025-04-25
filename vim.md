@@ -2,6 +2,27 @@
 
 ## important key
 
+### edit multiple files
+```
+vi file1.txt file2.txt
+
+//switch between files. will show the list of files being opened by vi
+:buffers
+
+//open first file
+:buffer 1
+
+//open second file
+:buffer 2
+
+//quick copy the line
+yy
+
+//quick paste the line
+p
+
+```
+
 ### line movement
 j - down one line, 5j means going down 5 times
 
