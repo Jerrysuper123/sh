@@ -1,5 +1,92 @@
 # sh
 
+Ahhh gotcha — you meant **PS1**, not PSI 😄  
+Let's dive into that properly then!
+
+---
+
+### 🧾 What is **PS1** in Linux?
+
+**`PS1`** is an environment variable that defines your **primary shell prompt** — the thing you see every time the shell is ready for a new command.
+
+---
+
+### 🖥 Example:
+```bash
+echo $PS1
+```
+
+Might show something like:
+```bash
+\u@\h \W\$
+```
+
+Which translates to something like:
+```bash
+john@my-computer ~$
+```
+
+---
+
+### 🔤 Common PS1 Escape Sequences
+
+| Code   | Meaning                        |
+|--------|--------------------------------|
+| `\u`   | Username                      |
+| `\h`   | Hostname (short)              |
+| `\H`   | Full hostname                 |
+| `\w`   | Current working directory     |
+| `\W`   | Basename of current directory |
+| `\d`   | Date                          |
+| `\t`   | Time (HH:MM:SS)               |
+| `\!`   | History number                |
+| `\#`   | Command number                |
+| `\$`   | Shows `$` for normal user or `#` for root |
+
+You can customize it in your `.bashrc` or `.zshrc` file like this:
+
+```bash
+export PS1="\u@\h:\w\$ "
+```
+
+This would show something like:
+```bash
+john@laptop:~/projects$
+```
+
+---
+
+### 📦 Why is PS1 Important?
+
+- It's the **look and feel** of your terminal.
+- You can use it to:
+  - Show Git branch info
+  - Colorize your prompt
+  - Add emojis or custom text
+  - Display load average or PSI info if you want
+
+---
+
+### 🧪 Example: A Fancy PS1
+
+```bash
+export PS1="\[\e[32m\]\u@\h\[\e[0m\] \[\e[34m\]\w\[\e[0m\] \$ "
+```
+
+This will give you a green `user@host`, a blue current directory, and a normal `$`.
+
+---
+
+### ✅ TL;DR
+
+| Term | Meaning |
+|------|---------|
+| **PS1** | Defines what your terminal prompt looks like |
+| **Affects?** | How you see user, path, or custom info in the shell |
+| **Customizable?** | Yes! Through `.bashrc`, `.zshrc`, etc. |
+
+---
+
 ## ls <folder> does list recursively, ls does not
 
 By default, when you run:
