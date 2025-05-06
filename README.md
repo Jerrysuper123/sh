@@ -1,5 +1,47 @@
 # sh
 
+## some find command
+
+```
+ail  mkdir -p playground/dir-{001..100}
+ail  touch playground/dir-{001..100}/file-{A..Z}
+ail  cd playground
+ail  ls
+ail  cd dir-001
+ail  find playground -type f -name 'file-A' | wc -l
+ail  touch playground/timestamp
+ail  stat playground/timestamp
+ail  touch playground/timestamp
+ail  stat playground/timestamp
+//touch every file that match the name file-B in the playground folder
+ail  find playground -type f -name 'file-B' -exec touch '{}' ';'
+
+//find files that is newer that playground/timestamp file
+ail  find playground -type f -newer playground/timestamp
+ail  histroy tail
+ail  history -tail
+```
+
+The command:
+
+```bash
+find playground -type f -name 'file-A' | wc -l
+```
+
+breaks down as follows:
+
+1. `find playground` – Searches inside the `playground` directory and all its subdirectories.
+2. `-type f` – Limits the search to **files only** (not directories or other types).
+3. `-name 'file-A'` – Looks for files **named exactly `file-A`**.
+4. `| wc -l` – Counts the number of lines output by `find`, which equals the **number of matching files**.
+
+### Meaning:
+
+This command **counts how many files named `file-A` exist inside the `playground` directory and its subdirectories**.
+
+
+
+
 ## -p create parent directory if not existed.
 
 The `-p` option with `mkdir` stands for **"parents"**, and it allows the command to:
