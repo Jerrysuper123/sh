@@ -1,5 +1,26 @@
 # sh
 
+## -p create parent directory if not existed.
+
+The `-p` option with `mkdir` stands for **"parents"**, and it allows the command to:
+
+1. **Create parent directories as needed** – If any of the intermediate directories in the path don’t exist, `mkdir -p` will create them.
+2. **Avoid error if the directory already exists** – It won’t complain or exit with an error if the directory already exists.
+
+### Example:
+
+```bash
+mkdir -p /home/user/projects/myapp/logs
+```
+
+This will:
+
+* Create `/home/user`, `/home/user/projects`, `/home/user/projects/myapp`, and `/home/user/projects/myapp/logs` if they don’t already exist.
+* Do nothing if those directories already exist (no error).
+
+Would you like a quick example to test this in your terminal?
+
+
 Ahhh gotcha — you meant **PS1**, not PSI 😄  
 Let's dive into that properly then!
 
